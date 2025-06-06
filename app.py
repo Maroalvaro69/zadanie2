@@ -3,7 +3,7 @@ import datetime
 import requests
 
 app = Flask(__name__)
-author = "Twoje Imię i Nazwisko"
+author = "Marek Górnicki"
 port = 5000
 
 LOCATIONS = {
@@ -15,8 +15,8 @@ LOCATIONS = {
 def index():
     weather_info = None
     if request.method == "POST":
-        country = request.form.get("country")
-        city = request.form.get("city")
+        country = request.form.get("country").strip()
+        city = request.form.get("city").strip()
         lat, lon = LOCATIONS[country][city]
 
         api_url = f"https://api.open-meteo.com/v1/forecast?latitude={lat}&longitude={lon}&current_weather=true"
